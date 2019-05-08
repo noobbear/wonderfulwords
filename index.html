@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title>The wonderful words I like</title>
+		<link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
+		<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+	</head>
+	<style type="text/css">
+	. {
+			text-overflow: ellipsis;
+			white-space: nowrap;
+			overflow: hidden;
+		}
+		
+		p {
+			color: #0bdad6;
+			text-align: left;
+		}
+		
+		span {
+			float: right;
+			color: #0bdad6;
+			margin: 5px;
+		}
+		
+		#cont {
+			background: -webkit-gradient(linear, 0% 20%, 0% 92%, from(#fff), to(#f3f3f3), color-stop(.1, #fff));
+			border-top: 1px solid #ccc;
+			border-right: 1px solid #ccc;
+			border-left: 1px solid #ccc;
+			-webkit-border-top-left-radius: 60px 5px;
+			-webkit-border-top-right-radius: 60px 5px;
+			-webkit-border-bottom-right-radius: 60px 60px;
+			-webkit-box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.3);
+			padding: 20px;
+			padding-bottom: 100px;
+		}
+	}
+	</style>
+
+	<body>
+		<div id="cont" style="max-width: 1000px;margin: 20px auto;">
+		</div>
+	</body>
+
+</html>
+<script>
+	$.getJSON("./words.json", "", function(data) {　 //each循环 使用$.each方法遍历返回的数据date
+		$.each(data, function(i, e) {
+			var d = "<div style='clear: both;'><p>" + e.words + "</p><span>" + e.name + "</span><span>" + e.time + "</span></div>";
+			$("#cont").append(d);
+		})
+	});
+</script>
