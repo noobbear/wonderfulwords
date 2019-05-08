@@ -47,9 +47,9 @@
 
 </html>
 <script>
-	$.getJSON("./words.json", "", function(data) {　 //each循环 使用$.each方法遍历返回的数据date
+	$.getJSON("./words.json", "", function(data) {
 		$.each(data, function(i, e) {
-			var d = "<div style='clear: both;'><p>" + e.words + "</p><span>" + e.name + "</span><span>" + e.time + "</span></div>";
+			var d = "<div style='clear: both;'><p>" + $("<div></div>").html(e.words).text() + "</p><span>" + $("<div></div>").html(e.name).text() + "</span><span>" + $("<div></div>").html(e.time).text() + "</span></div>";
 			$("#cont").append(d);
 		})
 	});
